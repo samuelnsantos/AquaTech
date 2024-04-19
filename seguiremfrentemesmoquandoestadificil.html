@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="titulo">AquaTech</title>
+    <link rel="shortcut icon" href="imagens/favicon2.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="cadastro.css">
+
+</head>
+
+<body>
+
+    <div class="containerFormulario">
+
+        <h1>Cadastro</h1>
+
+        <div class="coisasCadastro">
+            <div class="containerInput">
+                <span>Nome</span>
+                <input type="text">
+                <span class="avisoNome"></span>
+            </div>
+
+            <div class="containerInput">
+                <span>CPF</span>
+                <input type="text">
+                <span class="avisoCPF"></span>
+            </div>
+
+            <div class="containerInput">
+                <span>E-mail</span>
+                <input type="text">
+                <span class="avisoEmail"></span>
+            </div>
+
+
+            <div class="containerInput">
+                <span>Senha</span>
+                <input type="text">
+                <span class="avisoSenha"></span>
+            </div>
+
+            <div class="containerInput">
+                <span>Confirmar Senha</span>
+                <input type="text">
+                <span class="avisoConfSenha"></span>
+            </div>
+        </div>
+
+        <button>Cadastrar</button>
+
+    </div>
+
+    <div class="containerFormulario">
+
+        <h1>Login</h1>
+
+        <div class="coisasLogin">
+            <div class="containerInput">
+                <span>E-mail</span>
+                <input type="text">
+                <span class="avisoEmail"></span>
+            </div>
+
+
+            <div class="containerInput">
+                <span>Senha</span>
+                <input type="text">
+                <span class="avisoSenha"></span>
+            </div>
+        </div>
+
+        <button onclick="AAAA()">Logar</button>
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+    function AAAA() {
+
+        newPageTitle = '';
+        document.querySelector('title').textContent
+            = 'Login | AquaTech';
+
+        window.location.assign('index.html')
+    }
+
+</script>

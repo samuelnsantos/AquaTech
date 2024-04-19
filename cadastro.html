@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro | AquaTech</title>
+
+    <link rel="shortcut icon" href="imagens/favicon2.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="style2.css">
+</head>
+
+<body>
+
+    <div class="containerFormulario">
+
+        <h1>Cadastro</h1>
+
+        <div class="coisasCadastro">
+            <div class="containerInput">
+                <span class="label">Nome</span>
+                <input type="text" id="input_nome" onblur="verificarVazioNome()">
+                <span class="aviso" id="avisoNome"></span>
+            </div>
+
+            <!-- <div class="containerInput">
+                <span class="label">CPF</span>
+                <input type="text" id="input_cpf" onkeyup="verificarCPF()" onblur="verificarVazioCPF()">
+                <span class="aviso" id="avisoCPF"></span>
+            </div> -->
+
+            <div class="containerInput">
+                <span class="label">E-mail</span>
+                <input type="text" id="input_email" onkeyup="verificarEmail()" onblur="verificarVazioEmail()">
+                <span class="aviso" id="avisoEmail"></span>
+            </div>
+
+
+            <div class="containerInput">
+                <span class="label">Senha</span>
+                <input type="text" id="input_senha" onkeyup="verificarSenha()" onblur="verificarVazioSenha()">
+                <span class="aviso" id="avisoSenha"></span>
+            </div>
+
+            <div class="containerInput">
+                <span class="label">Confirmar Senha</span>
+                <input type="text" id="input_confSenha" onkeyup="verificarConfSenha()"
+                    onblur="verificarVazioConfSenha()">
+                <span class="aviso" id="avisoConfSenha"></span>
+            </div>
+            <span id="trocarTela">Já possui uma conta? Faça <a href="login.html">login!</a></span>
+        </div>
+
+
+        <button onclick="cadastrar()">Cadastrar</button>
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+    let mensagem = 'Campo obrigatório.';
+    let erro = false;
+
+    function verificarVazioNome() {
+
+        const nome = input_nome.value;
+
+
+        if (nome == '') {
+
+            avisoNome.innerHTML = mensagem;
+
+        } else {
+
+            avisoNome.innerHTML = ``;
+
+        }
+
+    }
+
+    // function verificarVazioCPF() {
+
+    //     const cpf = input_cpf.value;
+
+    //     if (cpf == '') {
+
+    //         avisoCPF.innerHTML = mensagem;
+
+    //     } else {
+
+    //         avisoCPF.innerHTML = ``;
+
+    //     }
+
+    // }
+
+    function verificarVazioEmail() {
+
+        const email = input_email.value;
+
+        if (email == '') {
+
+            avisoEmail.innerHTML = mensagem;
+
+        }
+
+    }
+
+    function verificarVazioSenha() {
+
+        const senha = input_senha.value;
+
+        if (senha == '') {
+
+            avisoSenha.innerHTML = mensagem;
+
+        }
+
+    }
+
+    function verificarVazioConfSenha() {
+
+        const confSenha = input_confSenha.value;
+
+        if (confSenha == '') {
+
+            avisoConfSenha.innerHTML = mensagem;
+
+        }
+
+    }
+
+
+    // function verificarCPF() {
+
+    //     const cpf = input_cpf.value;
+
+    //     if (!Number(cpf)) {
+
+    //         avisoCPF.innerHTML = `Insira apenas números.`;
+
+    //     } else if (cpf.length < 11 || cpf.length > 11) {
+
+    //         avisoCPF.innerHTML = `A quantidade de dígitos tem de ser 11`;
+
+    //     } else {
+
+    //         avisoCPF.innerHTML = ``;
+
+    //     }
+
+    // }
+
+    function verificarEmail() {
+
+        const email = input_email.value;
+        const tamanhoEmail = email.length;
+        const indexArroba = email.indexOf('@');
+
+        if (indexArroba == -1 || indexArroba == tamanhoEmail - 1) {
+
+            avisoEmail.innerHTML = `Insira um E-mail válido.`;
+
+        } else {
+
+            avisoEmail.innerHTML = ``;
+
+        }
+
+    }
+
+    function verificarSenha() {
+
+        const senha = input_senha.value;
+        const tamanhoSenha = senha.length;
+
+        let verificarNumero = false;
+
+        if (tamanhoSenha < 8) {
+
+            avisoSenha.innerHTML = `A senha precisa ter no mínimo 8 caracteres.`;
+
+        } else {
+
+            avisoSenha.innerHTML = ``;
+
+        }
+
+        for (let contador = 0; contador <= 9; contador++) {
+
+            if (senha.indexOf(contador) >= 0) {
+
+                verificarNumero = true;
+
+                return;
+
+            }
+
+        }
+
+        if (!verificarNumero) {
+
+            avisoSenha.innerHTML = `A senha precisa ter pelo menos um número.`;
+
+        } else {
+
+            avisoSenha.innerHTML = ``;
+
+        }
+
+    }
+
+    function verificarConfSenha() {
+
+        const senha = input_senha.value;
+        const confSenha = input_confSenha.value;
+
+        if (confSenha != senha) {
+
+            avisoConfSenha.innerHTML = `As senhas não se coincidem.`;
+
+        } else {
+
+            avisoConfSenha.innerHTML = ``;
+
+        }
+
+    }
+
+    function cadastrar() {
+
+        const verificarAviso = document.getElementsByClassName('aviso');
+
+        console.log(avisoNome.innerHTML);
+        console.log(avisoEmail.innerHTML);
+        console.log(avisoSenha.innerHTML);
+        console.log(avisoConfSenha.innerHMTL);
+
+        if (avisoNome.innerHTML || avisoEmail.innerHTML || avisoSenha.innerHTML || avisoConfSenha.innerHMTL) {
+
+            alert(`Verifique todos os dados para conseguir fazer cadastro.`);
+
+        } else {
+
+            alert(`Cadastrado com sucesso!`);
+            window.location.assign('login.html')
+
+        }
+
+    }
+
+</script>
